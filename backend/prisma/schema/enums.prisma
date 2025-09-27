@@ -1,0 +1,19 @@
+enum Category {
+    CLOTHING
+    SHOES
+    ACCESSORIES
+    ELECTRONICS
+}
+
+enum OrderStatus {
+    PENDING
+    PAID
+    CANCELED
+}
+
+enum ImageType {
+    THUMBNAIL
+    PREVIEW
+    FULL
+    ZOOM
+}

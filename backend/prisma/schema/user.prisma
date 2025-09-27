@@ -1,0 +1,13 @@
+model User {
+    id        Int      @id @default(autoincrement())
+    userName  String   @map("user_name")
+    gmail     String   @unique
+    password  String
+    createdAt DateTime @default(now()) @map("created_at")
+
+    Review   Review[]
+    CartItem CartItem[]
+    Order    Order[]
+
+    @@map("user")
+}

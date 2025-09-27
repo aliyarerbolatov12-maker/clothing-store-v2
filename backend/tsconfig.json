@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+        "@shopco/shared": ["../../shared/src"]
+    },
+    "module": "commonjs",
+    "target": "es6",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "skipLibCheck": true
+  },
+  "include": ["src", "prisma/db.ts"],
+  "exclude": ["node_modules", "dist"]
+}
