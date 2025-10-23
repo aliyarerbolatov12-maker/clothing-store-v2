@@ -27,7 +27,7 @@ const satochi = localFont({
 const integralCF = localFont({
   src: [
     {
-      path: "../fonts/integralCF/integralcf-bold.woff2",
+      path: "../fonts/integralCf/integralcf-bold.woff2",
       weight: "700",
       style: "normal",
     },
