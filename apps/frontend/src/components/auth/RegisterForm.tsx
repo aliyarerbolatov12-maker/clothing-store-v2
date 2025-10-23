@@ -4,10 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 
-import {
-  registerUserSchema,
-  RegisterUserDto,
-} from "@shopco/shared/schemas/auth";
+import { registerUserSchema, RegisterUserDto } from "@/schemas/auth";
 
 import TextInput from "@/components/formUI/TextInput";
 import Button from "@/components/formUI/Button";

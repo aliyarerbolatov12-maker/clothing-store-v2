@@ -19,12 +19,7 @@ export default function ProductList({ productCards, className }: Props) {
     <div className={className}>
       {productCards.map((element) => (
         <Link href={`/productInfo/${element.id}`} key={element.id}>
-          <ProductCard
-            srcImg={element.srcImg}
-            productName={element.productName}
-            rating={element.rating}
-            price={element.price}
-          />
+          <ProductCard {...(element as any)} />
         </Link>
       ))}
     </div>
