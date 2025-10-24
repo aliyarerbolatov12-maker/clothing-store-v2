@@ -26,7 +26,7 @@ export default function Hero() {
             </p>
 
             <Link
-              href="/shops"
+              href="/filters"
               className="w-full sm:w-auto text-center py-4 px-8 bg-black text-white 
               font-medium font-sans rounded-[70px] hover:bg-gray-800 transition-colors"
             >
