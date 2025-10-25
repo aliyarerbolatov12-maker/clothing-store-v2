@@ -1,5 +1,3 @@
-import Container from "@/layout/Container";
-
 const brands = [
   { src: "/images/logos/brands/versace.svg", alt: "versace" },
   { src: "/images/logos/brands/zara.svg", alt: "zara" },

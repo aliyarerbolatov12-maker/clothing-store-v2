@@ -1,5 +1,4 @@
 import Email from "../assets/icons/email.svg?react";
-import clsx from "clsx";
 
 type StayInformedProps = {
   className?: string;
