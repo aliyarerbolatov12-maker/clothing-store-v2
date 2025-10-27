@@ -16,7 +16,7 @@ export default function StayInformed({ className }: StayInformedProps) {
         STAY UP TO DATE ABOUT OUR LATEST OFFERS
       </h1>
 
-      <form className="w-full max-w-[26rem] flex flex-col gap-4">
+      <form className="w-full max-w-104 flex flex-col gap-4">
         <div className="flex items-center bg-white rounded-full  focus-within:ring-2 focus-within:ring-blue-500">
           <div className="flex-none pl-4 pr-1">
             <Email className="text-gray-500 w-6 h-6 " />
@@ -25,7 +25,7 @@ export default function StayInformed({ className }: StayInformedProps) {
             type="email"
             placeholder="Enter your email address"
             required
-            className="flex-grow bg-transparent text-black placeholder:text-gray-500 px-4 
+            className="grow bg-transparent text-black placeholder:text-gray-500 px-4 
             py-3 text-base leading-normal text-left focus:outline-none  "
           />
         </div>

@@ -24,7 +24,7 @@ export default function Brands() {
           {duplicated.map(({ src, alt }, i) => (
             <div
               key={alt + i}
-              className="flex items-center justify-center h-10 flex-shrink-0 transition-opacity duration-200 hover:opacity-80"
+              className="flex items-center justify-center h-10 shrink-0 transition-opacity duration-200 hover:opacity-80"
             >
               <img
                 src={src}

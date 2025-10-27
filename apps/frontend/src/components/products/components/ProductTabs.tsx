@@ -17,7 +17,6 @@ import {
   ProductReview,
 } from "@/types/products/product";
 import ViewAllButton from "@/components/ui/ViewAllButton";
-import RecomendedProduct from "@/sections/RecomendedProduct";
 
 type ProductTabsProps = {
   description: string;
