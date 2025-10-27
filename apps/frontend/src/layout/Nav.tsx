@@ -1,4 +1,10 @@
-import { useEffect, useRef } from "react";
+import clsx from "clsx";
+import useBodyOverflow from "@/hooks/useBodyOverflow";
+import useClickOutside from "@/hooks/useClickOutside";
+import useMenuAnimation from "@/hooks/useMenuAnimation";
+import useWindowSize from "@/hooks/useWindowSize";
+import { useRef } from "react";
+import NavLinks from "./NavLinks";
 
 type NavProps = {
   burgerOpen: boolean;
@@ -11,100 +17,65 @@ export default function Nav({
   setBurgerOpen,
   className,
 }: NavProps) {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const burgerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const burgerRef = useRef<HTMLButtonElement | null>(null);
 
-  const handleBurgerClick = () => {
-    setBurgerOpen(!burgerOpen);
-  };
+  useClickOutside([menuRef, burgerRef], () => setBurgerOpen(false));
+  useBodyOverflow(burgerOpen);
+  const menuClasses = useMenuAnimation(burgerOpen);
+  const [windowWidth] = useWindowSize();
+  const isMobile = windowWidth < 900;
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        burgerOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        burgerRef.current &&
-        !burgerRef.current.contains(event.target as Node)
-      ) {
-        setBurgerOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [burgerOpen, setBurgerOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = burgerOpen ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [burgerOpen]);
-
-  const navLinks = [
-    { label: "Shop", href: "#" },
-    { label: "On Sale", href: "#" },
-    { label: "New Arrivals", href: "#" },
-    { label: "Brands", href: "#" },
-  ];
+  const handleBurgerClick = () => setBurgerOpen(!burgerOpen);
 
   return (
-    <nav className={`relative ${className}`}>
-      <div className="hidden burger:flex gap-8 text-base font-medium">
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="text-gray-800 hover:text-blue-600 transition-colors duration-300 py-2"
-          >
-            {link.label}
-          </a>
-        ))}
+    <nav className={clsx("relative", className)}>
+      <div
+        className={clsx(
+          !isMobile ? "flex" : "hidden",
+          "gap-3 text-base font-medium"
+        )}
+      >
+        <NavLinks />
       </div>
+
       <button
         ref={burgerRef}
         onClick={handleBurgerClick}
-        className="flex-col w-7 h-6 justify-center items-center burger:hidden flex z-50 relative"
-        aria-expanded={burgerOpen}
-        aria-label="Toggle menu"
+        className={clsx(
+          isMobile ? "flex" : "hidden",
+          "flex-col w-7 h-6 justify-center items-center z-50 relative"
+        )}
       >
         <span
-          className={`absolute h-0.5 w-full bg-current rounded-full transition-all duration-300 ${
+          className={clsx(
+            "absolute h-0.5 w-full bg-current rounded-full transition-all duration-300",
             burgerOpen ? "rotate-45 top-1/2 -translate-y-1/2" : "top-0"
-          }`}
+          )}
         ></span>
         <span
-          className={`absolute h-0.5 w-full bg-current rounded-full transition-all duration-300 top-1/2 -translate-y-1/2 ${
+          className={clsx(
+            "absolute h-0.5 w-full bg-current rounded-full transition-all duration-300 top-1/2 -translate-y-1/2",
             burgerOpen ? "opacity-0 scale-x-0" : "opacity-100"
-          }`}
+          )}
         ></span>
         <span
-          className={`absolute h-0.5 w-full bg-current rounded-full transition-all duration-300 ${
+          className={clsx(
+            "absolute h-0.5 w-full bg-current rounded-full transition-all duration-300",
             burgerOpen ? "-rotate-45 top-1/2 -translate-y-1/2" : "bottom-0"
-          }`}
+          )}
         ></span>
       </button>
-
-      {/* Mobile menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-screen w-4/5 max-w-xs bg-white z-40 transition-transform duration-500 ease burger:hidden flex flex-col pt-24 px-6 space-y-5 shadow-xl ${
-          burgerOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={clsx(
+          "fixed top-0 right-0 h-screen w-[80%] max-w-[320px] bg-white z-40 transition-transform duration-500 ease-in-out",
+          burgerOpen ? "translate-x-0" : "translate-x-full",
+          menuClasses,
+          "flex flex-col pt-24 px-6 space-y-5 shadow-xl"
+        )}
       >
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            onClick={() => setBurgerOpen(false)}
-            className="text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-300 py-2 border-b border-gray-100"
-          >
-            {link.label}
-          </a>
-        ))}
+        <NavLinks onClick={() => setBurgerOpen(false)} />
       </div>
     </nav>
   );
