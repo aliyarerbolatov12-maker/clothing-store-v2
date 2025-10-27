@@ -1,4 +1,3 @@
-// components/Button.tsx
 import { ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 

@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import {
   Pagination as PaginationRoot,
   PaginationContent,
@@ -7,46 +8,32 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/scadcnUi/pagination";
+import getPages from "@/utils/paginationHelper";
 
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  config?: {
+    maxVisible?: number;
+    showFirstLast?: boolean;
+    showEllipsis?: boolean;
+  };
 }
 
 export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
+  config = {},
 }: PaginationProps) {
-  const getPages = (): (number | "ellipsis")[] => {
-    const pages: (number | "ellipsis")[] = [];
-    const maxVisible = 3;
-
-    if (totalPages <= maxVisible + 2) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      if (currentPage <= maxVisible) {
-        for (let i = 1; i <= maxVisible + 1; i++) pages.push(i);
-        pages.push("ellipsis", totalPages);
-      } else if (currentPage > totalPages - maxVisible) {
-        pages.push(1, "ellipsis");
-        for (let i = totalPages - maxVisible; i <= totalPages; i++)
-          pages.push(i);
-      } else {
-        pages.push(1, "ellipsis");
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i);
-        pages.push("ellipsis", totalPages);
-      }
-    }
-
-    return pages;
-  };
-
-  const pages = getPages();
+  const pages = useMemo(
+    () => getPages(currentPage, totalPages, config),
+    [currentPage, totalPages, config]
+  );
 
   return (
-    <PaginationRoot className="mb-[5rem]">
+    <PaginationRoot className="mb-20">
       <PaginationContent>
         <PaginationItem className="absolute left-0">
           <PaginationPrevious
@@ -58,9 +45,9 @@ export default function Pagination({
           />
         </PaginationItem>
 
-        {pages.map((p, index) =>
+        {pages.map((p, i) =>
           p === "ellipsis" ? (
-            <PaginationItem key={`ellipsis-${index}`}>
+            <PaginationItem key={`ellipsis-${i}`}>
               <PaginationEllipsis />
             </PaginationItem>
           ) : (

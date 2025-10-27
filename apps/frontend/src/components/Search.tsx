@@ -17,7 +17,7 @@ export default function Search({ className }: Props) {
       <input
         type="text"
         placeholder="Search for products"
-        className="grow-1  pr-4 outline-none max-search:hidden"
+        className="grow  pr-4 outline-none max-search:hidden"
       />
     </div>
   );
