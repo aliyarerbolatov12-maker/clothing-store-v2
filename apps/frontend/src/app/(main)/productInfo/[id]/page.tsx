@@ -1,5 +1,3 @@
-// /app/products/[id]/page.tsx
-import Image from "next/image";
 import { products } from "@/lib/products";
 import { notFound } from "next/navigation";
 import FullInfo from "@/components/products/full/Info";

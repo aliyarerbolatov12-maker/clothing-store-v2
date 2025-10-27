@@ -14,23 +14,23 @@ import Pagination from "@/components/customShadcnUi/Pagination";
 
 export default function FiltersPage() {
   const [page, setPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
 
-  useEffect(() => {
-    const updateItems = () => {
-      if (window.innerWidth < 468) {
-        setItemsPerPage(4);
-      } else if (window.innerWidth < 768) {
-        setItemsPerPage(6);
-      } else {
-        setItemsPerPage(9);
-      }
-    };
+  // useEffect(() => {
+  //   const updateItems = () => {
+  //     if (window.innerWidth < 468) {
+  //       setItemsPerPage(4);
+  //     } else if (window.innerWidth < 768) {
+  //       setItemsPerPage(6);
+  //     } else {
+  //       setItemsPerPage(9);
+  //     }
+  //   };
 
-    updateItems();
-    window.addEventListener("resize", updateItems);
-    return () => window.removeEventListener("resize", updateItems);
-  }, []);
+  //   updateItems();
+  //   window.addEventListener("resize", updateItems);
+  //   return () => window.removeEventListener("resize", updateItems);
+  // }, []);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -59,7 +59,7 @@ export default function FiltersPage() {
       </div>
 
       <div className="flex gap-x-2 md:gap-x-8">
-        <div className="hidden md:block w-full max-w-[15rem]">
+        <div className="hidden md:block w-full max-w-60">
           <Aside />
         </div>
 

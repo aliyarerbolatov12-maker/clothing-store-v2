@@ -1,4 +1,3 @@
-// src/app/page.tsx
 
 import Hero from "@/sections/Hero";
 import TopSelling from "@/sections/TopSelling";
