@@ -3,7 +3,7 @@ import { ProductCardProps } from "@/types/products/product";
 export const products: ProductCardProps[] = [
   {
     id: "1",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "T-SHIRT WITH TAPE DETAILS",
     description:
       "This graphic t-shirt is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
@@ -56,7 +56,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "2",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "T-SHIRT WITH MODERN FIT",
     rating: 4.3,
     colorsName: [
@@ -111,7 +111,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "3",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "CLASSIC TEE",
     rating: 4.6,
     colorsName: [
@@ -169,7 +169,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "4",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [
@@ -229,7 +229,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "5",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [
@@ -289,7 +289,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "6",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [
@@ -349,7 +349,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "7",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [
@@ -409,7 +409,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "8",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [
@@ -469,7 +469,7 @@ export const products: ProductCardProps[] = [
   },
   {
     id: "9",
-    srcImg: "/images/products/t-shirt-1.jpg",
+    srcImg: "/images/products/t-shirt-1.webp",
     productName: "STREET STYLE TEE",
     rating: 4.7,
     colorsName: [

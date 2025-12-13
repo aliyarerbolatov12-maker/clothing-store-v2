@@ -10,19 +10,22 @@ export default function DressStyleGrid() {
       <div className="grid grid-cols-1 min-[390px]:grid-cols-3 gap-3 max-[390px]:gap-2 auto-rows-[1fr]">
         <DressStyleCard
           title="CASUAL"
-          image="/images/browserDressStyle/casual.png"
+          image="/images/browserDressStyle/casual.webp"
         />
         <DressStyleCard
           title="FORMAL"
-          image="/images/browserDressStyle/formal.png"
+          image="/images/browserDressStyle/formal.webp"
           className="col-span-1 min-[390px]:col-span-2"
         />
         <DressStyleCard
           title="PARTY"
-          image="/images/browserDressStyle/party.png"
+          image="/images/browserDressStyle/party.webp"
           className="col-span-1 min-[390px]:col-span-2"
         />
-        <DressStyleCard title="GYM" image="/images/browserDressStyle/gym.png" />
+        <DressStyleCard
+          title="GYM"
+          image="/images/browserDressStyle/gym.webp"
+        />
       </div>
     </section>
   );
