@@ -11,26 +11,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/scadcnUi/sheet";
 import Pagination from "@/components/customShadcnUi/Pagination";
+import { useItemsPerPage } from "@/hooks/useItemsPerPage";
 
 export default function FiltersPage() {
   const [page, setPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const itemsPerPage = useItemsPerPage();
 
-  // useEffect(() => {
-  //   const updateItems = () => {
-  //     if (window.innerWidth < 468) {
-  //       setItemsPerPage(4);
-  //     } else if (window.innerWidth < 768) {
-  //       setItemsPerPage(6);
-  //     } else {
-  //       setItemsPerPage(9);
-  //     }
-  //   };
-
-  //   updateItems();
-  //   window.addEventListener("resize", updateItems);
-  //   return () => window.removeEventListener("resize", updateItems);
-  // }, []);
+  useEffect(() => {
+    setPage(1);
+  }, [itemsPerPage]);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -62,7 +51,6 @@ export default function FiltersPage() {
         <div className="hidden md:block w-full max-w-60">
           <Aside />
         </div>
-
         <div className="w-full flex flex-col relative">
           <ProductList
             productCards={currentProducts}
