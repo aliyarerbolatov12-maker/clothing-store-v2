@@ -53,7 +53,7 @@ export default function Hero() {
             max-[510px]:h-[clamp(250px,70vh,300px)] "
           >
             <Image
-              src="/images/background/t.jpg"
+              src="/images/background/t.webp"
               alt="two people clothing"
               width={900}
               height={900}
