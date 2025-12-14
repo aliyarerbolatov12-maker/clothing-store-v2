@@ -1,19 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "@/components/ui/scadcnUi/button";
 
-export default function Counter() {
-  const [count, setCount] = useState<number>(0);
+type CounterProps = {
+  value: number;
+  onChange: Dispatch<SetStateAction<number>>;
+  min?: number;
+  max?: number;
+};
 
+export default function Counter({
+  value,
+  onChange,
+  min = 1,
+  max = 100,
+}: CounterProps) {
   const decrease = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
+    if (value > min) onChange(value - 1);
   };
 
   const increase = () => {
-    setCount(count + 1);
+    if (value < max) onChange(value + 1);
   };
 
   return (
@@ -21,18 +29,19 @@ export default function Counter() {
       <Button
         variant="ghost"
         onClick={decrease}
-        disabled={count === 0}
-        className="w-[24px] h-[24px] p-0 text-lg"
+        disabled={value <= min}
+        className="w-6 h-6 p-0 text-lg"
       >
         −
       </Button>
-      <span className="min-w-[24px] text-center text-base font-semibold">
-        {count}
+      <span className="min-w-6 text-center text-base font-semibold">
+        {value}
       </span>
       <Button
         variant="ghost"
         onClick={increase}
-        className="w-[24px] h-[24px] p-0 text-lg"
+        disabled={value >= max}
+        className="w-6 h-6 p-0 text-lg"
       >
         +
       </Button>
