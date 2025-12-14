@@ -1,7 +1,7 @@
 "use client";
 
 import RatingStars from "@/components/RatingStars";
-import { ProductCardProps } from "@/types/products/product";
+import { ProductCardProps, Color, ProductSize } from "@/types/products/product";
 import Image from "next/image";
 import Price from "../components/Price";
 import ColorSelector from "@/components/customShadcnUi/ColorSelector";
@@ -10,8 +10,11 @@ import Counter from "@/components/ui/Counter";
 import { Button } from "@/components/ui/scadcnUi/button";
 import ProductTabs from "../components/ProductTabs";
 import RecomendedProduct from "@/sections/RecomendedProduct";
+import { useState } from "react";
+import { useCartStore } from "@/store/cartStore";
 
 export default function FullInfo({
+  id,
   srcImg,
   productName,
   rating,
@@ -24,6 +27,30 @@ export default function FullInfo({
   detailsTable,
   reviews,
 }: ProductCardProps) {
+  const [selectedColor, setSelectedColor] = useState<Color | null>(
+    colorsName[0] || null
+  );
+  const [selectedSize, setSelectedSize] = useState<ProductSize | null>(
+    sizes[0] || null
+  );
+  const [quantity, setQuantity] = useState(1);
+
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedSize) return;
+
+    addItem({
+      id,
+      name: productName,
+      price: discountPrice ?? price,
+      quantity,
+      color: selectedColor.name,
+      size: selectedSize.name,
+      srcImg: srcImg,
+    });
+  };
+
   return (
     <section>
       <div className="border-t border-gray-200 mt-6 mb-20" />
@@ -72,9 +99,7 @@ export default function FullInfo({
             <div className="max-w-full overflow-x-auto">
               <ColorSelector
                 colors={colorsName}
-                onColorSelect={(color) => {
-                  console.log("Selected color:", color);
-                }}
+                onColorSelect={setSelectedColor}
               />
             </div>
           </div>
@@ -84,13 +109,16 @@ export default function FullInfo({
             <p className="text-[1rem] font-medium opacity-60 mb-1">
               Choose Size
             </p>
-            <SizeSelector sizes={sizes} />
+            <SizeSelector sizes={sizes} onSizeSelect={setSelectedSize} />
           </div>
 
           {/* Add to Cart */}
           <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-5">
-            <Counter />
-            <Button className="text-[1rem] w-full sm:w-auto px-[4rem] sm:px-[10rem] py-5 rounded-[4rem]">
+            <Counter value={quantity} onChange={setQuantity} />
+            <Button
+              className="text-[1rem] w-full sm:w-auto px-[4rem] sm:px-[10rem] py-5 rounded-[4rem]"
+              onClick={handleAddToCart}
+            >
               Add to Cart
             </Button>
           </div>
