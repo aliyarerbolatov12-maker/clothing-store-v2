@@ -33,7 +33,7 @@ export default function Hero() {
               Shop now
             </Link>
 
-            <ul className="mt-12 flex  justify-center sm:flex-row gap-[clamp(1rem,2vw,4rem)]">
+            <ul className="mt-12 flex justify-center sm:flex-row gap-[clamp(1rem,2vw,4rem)]">
               {stats.map(({ value, label }) => (
                 <li key={label} className="flex flex-col items-start">
                   <b className="font-bold text-[clamp(1.375rem,3.5vw,2.125rem)]">
@@ -44,21 +44,22 @@ export default function Hero() {
               ))}
             </ul>
           </div>
-
           <div
-            className="w-full max-w-[800px] 
-            flex items-end justify-center 
+            className="relative w-full max-w-[800px] 
             h-[clamp(500px,70vh,600px)] 
             max-[880px]:h-[clamp(250px,70vh,400px)]
-            max-[510px]:h-[clamp(250px,70vh,300px)] "
+            max-[510px]:h-[clamp(250px,70vh,300px)] flex items-end justify-center"
           >
             <Image
               src="/images/background/t.webp"
               alt="two people clothing"
-              width={900}
-              height={900}
+              fill
               priority
-              className="w-full h-full object-contain object-bottom"
+              fetchPriority="high"
+              style={{ objectFit: "contain", objectPosition: "bottom" }}
+              sizes="(max-width: 510px) 100vw,
+                     (max-width: 880px) 70vw,
+                     800px"
             />
           </div>
         </div>
