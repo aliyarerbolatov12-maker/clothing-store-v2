@@ -3,7 +3,7 @@ import useBodyOverflow from "@/hooks/useBodyOverflow";
 import useClickOutside from "@/hooks/useClickOutside";
 import useMenuAnimation from "@/hooks/useMenuAnimation";
 import useWindowSize from "@/hooks/useWindowSize";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import NavLinks from "./NavLinks";
 
 type NavProps = {
